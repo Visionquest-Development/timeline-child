@@ -1,0 +1,12 @@
+{
+  "name": "pegasus-child-timeline",
+  "version": "1.0.0",
+  "description": "Pegasus Bootstrap Child theme by VQDEVfor Meow Were Talkin",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-sass": "^1.0.0"
+  },
+  
+  "author": "Jim O'Brien",
+  "license": "ISC"
+}

@@ -1,0 +1,158 @@
+/*
+ Theme Name:     Pegasus Child
+ Theme URI:      http://visionquestdevelopment.com
+ Description:    Pegasus Child Theme
+ Author:         Jim O'Brien
+ Author URI:     http://visionquestdevelopment.com
+ Template:       pegasus
+ Version:        0.0.1
+*/
+
+@import url("../pegasus/style.css");
+	
+	@import url(https://fonts.googleapis.com/css?family=Oleo+Script);
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	.the-more-link { display: none !important; }
+	
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~ HEADER ~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	.header { background: #a62a4a !important; }
+	.navbar-brand { 
+		font-family: 'Oleo Script', cursive; 
+		margin-top: 0 !important; 
+		position: relative; 
+		margin-top: 15px !important;
+		color: white !important; 
+	}
+	
+	.pegasus-header-content {
+	    color: white;
+		background: rgba(0,0,0,0.7);
+		padding: 20px 50px;
+		border-radius: 7px;
+	}
+	
+	.pegasus-header-content .submit-btn {
+		display: block; 
+		padding: 10px 20px; 
+		margin: 20px auto; 
+		background: white;
+		border-radius: 5px; 
+		max-width: 200px; 
+		color: black;
+		text-transform: uppercase; 
+	}
+	
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~ NAVIGATION ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	#menu-main-nav { float: right !important; }
+	
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~ FOOTER ~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	#main-footer { margin: 0; }
+	
+	footer h1 { text-align: center; color: white; text-transform: uppercase; }
+	
+	footer a { color: white !important; text-decoration: underline; }
+	footer h1, .octane-footer h2, .octane-footer h3, .octane-footer span, .octane-footer strong, .octane-footer p, .octane-footer div { color: white; }
+	footer {
+		padding: 50px 0; 	
+		color: white !important; 
+		background: #a62a4a !important;
+	}
+	
+	.social-icons { 
+		list-style-type: none; 
+		margin: 0  auto 40px !important;
+		padding: 0 !important;
+		text-align: center;
+		display: block; 
+	}
+	.social-icons li { display: inline-block; width: 8%; }
+	
+	.footer-logo { width: 50%; margin: 0 auto; display: block;  }
+	
+	
+	#text-3 iframe, #text-4 iframe { border: 1px solid black; }
+	
+	
+	footer .widgettitle { color: black; font-size: 32px; }
+	
+	.hashtag-1, .hashtag-2 {
+		font-size: 2em;
+		font-weight: bold; 
+		
+	}
+
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~PAGES~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~ HOME PAGE ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	
+	
+	.clearfix { clear: both; }
+	
+	
+	
+	
+		
+	/*~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~ TIMELINE CSS ~~~~~
+	~~~~~~~~~~~~~~~~~~~~~*/
+	
+	.meow-we-talkin-timeline {
+		margin: 0; 
+		padding: 0; 
+		list-style-type: none; 
+	}
+	
+	.meow-we-talkin-timeline li {
+		border: 1px solid black;
+		border-radius: 5px;
+		margin: 0 0 10px;
+		padding: 10px; 
+	}
+	 
+
+	
+	
+	
+	
+	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~SITEMAP~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+	#sitemap-list-pages { list-style-type: none !important; padding: 0 !important; }
+	
+	/* ~~~~~~~~~~~~~~~~~~~~~~
+	~~~~WOOCOMMERCE~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~*/
+
+	/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~MEDIA QUERIES~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	@media only screen and ( min-width: 1100px ) and ( max-width: 1405px) {
+		
+	}
+	
+	@media only screen and ( min-width: 981px ) {
+		
+	}
+		
+	@media only screen and (max-width: 980px) {
+		
+	}
+	
+	@media only screen and ( max-width: 767px ) {
+		
+	}
+	
+	@media only screen and (max-width: 479px) {
+		
+	}
