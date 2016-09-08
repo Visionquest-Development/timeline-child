@@ -126,7 +126,7 @@
 							
 							
 
-							<section id="cd-timeline" class="cd-container">
+							<section id="cd-timeline" class="">
 								<div class="cd-timeline-block">
 									<div class="cd-timeline-img cd-picture">
 										<time datetime="<?php the_date('c'); ?>"><?php print get_the_date(); ?></time>
