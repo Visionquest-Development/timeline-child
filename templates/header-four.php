@@ -98,7 +98,7 @@
 								<span class="icon-bar"></span>
 								<span class="icon-bar"></span>
 								</button>
-								<a class="navbar-brand tk-proxima-nova large" href="<?php esc_url( home_url() )?>">
+								<a class="navbar-brand tk-proxima-nova large" href="<?php bloginfo('url'); ?>">
 									<?php
 										$logo =  pegasus_theme_get_option( 'logo' );
 										if( ! empty( $logo ) ) : ?>
@@ -112,7 +112,7 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<!-- <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
 							<div class="collapse navbar-collapse">
-								<a class="navbar-brand mobile tk-proxima-nova pull-left" href="<?php esc_url( home_url() )?>">
+								<a class="navbar-brand mobile tk-proxima-nova pull-left" href="<?php bloginfo('url'); ?>">
 									<?php
 										$logo =  pegasus_theme_get_option( 'logo' );
 										if( ! empty( $logo ) ) : ?>

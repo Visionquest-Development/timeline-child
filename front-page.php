@@ -28,7 +28,13 @@
 					<div class="content-no-sidebar clearfix">
 						
 						<?php 
-							$categories = get_categories(); 
+							$cat_args = array(
+								'orderby'                  => 'name',
+								'order'                    => 'DESC',
+								'parent'  => 0
+							);
+							
+							$categories = get_categories( $cat_args ); 
 							foreach($categories as $cat) : 
 						?>
 							
@@ -40,85 +46,134 @@
 									'posts_per_page' => -1,
 									//'order'                  => 'DESC',
 									//'orderby'                => 'date'
-									"category"	=>	$cat->slug,
+									"category_name"	=>	$cat->slug,
 								) );
 								
 								$posts_count = 1;
 							?>
-							<ul class="meow-we-talkin-timeline">
-								<h2><?php echo $cat->cat_name ?></h2>
+							<h2 class="cat-year"><?php echo $cat->cat_name ?></h2>
+							<section class="meow-we-talkin-timeline cd-timeline">
+								
 								<?php
 									while ( $query->have_posts() ) : $query->the_post();
 								
 									++$posts_count;
 								?>
-
-									<li class="id-<?php the_ID(); ?>">
+									<?php
+										if ( has_post_thumbnail() ) { 
+											$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false, '' ); 
+										}/*else{
+											$thumb_url = array( get_template_directory_uri() . "/images/banner.png", "1");
+										}*/
+									?>
+									<?php 
+										//conditional for even
+										if($posts_count % 2): 
+									?>
+										<!--odd -->
+										<article class="article-<?php the_ID(); ?> cd-timeline-block right">
+											<div class="cd-timeline-img  cd-picture">
+												<?php /* ?>
+												<time datetime="<?php the_date('c'); ?>"><?php print get_the_date( 'M' ); ?></time>
+												<?php */ ?>
+											</div> <!-- cd-timeline-img -->
+											
+											
 										
-										<?php
-											if ( has_post_thumbnail() ) { 
-												$thumb_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full', false, '' ); 
-											}else{
-												$thumb_url = array( get_template_directory_uri() . "/images/banner.png", "1");
-											}
-										?>
-										<article class="article-<?php the_ID(); ?> block-inner">
-											<div class="image-container" style="background-image: url('<?php echo $thumb_url[0];?>');">
-											
-											</div>
-											<a id="" class="" href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+											<div class="inside-content cd-timeline-content">
 												
-												<div class="inside-content">
-													<!-- the title -->
-													
-													<?php 
-														//conditional for even
-														if($posts_count % 2): 
-													?>
-														<!--even post -->
-														<h3 class="featured-title"><?php the_title(); ?></h3>  
-													
-													
-													<?php else: ?>
-														<!-- odd post -->
-													
-													
-													<?php endif; ?>
-													
-													
-													
-													<!-- output the excerpt, and if no excerpt then output content-->
-													<div class="octane-featured-content ">
-														<?php  
-															$octane_excerpt = get_the_excerpt(); 
-															if(isset($octane_excerpt)) { ?>
-																<p>
-																	<?php 
-																		$temporary_excerpt = substr(strip_tags($octane_excerpt), 0, 130);
-																		echo $temporary_excerpt; 
-																	?>
-																</p>
-															<?php }else{  
-																$more = 0; 
-																$octane_content = get_the_content(); 
-																$temporary = substr(strip_tags($octane_content), 0, 130); ?>
-																<p>
-																	<?php echo $temporary; ?>
-																</p>
-														<?php }	?>
-													</div>
-													<!-- output a read more button -->
-													<div class=""> Read More </div>
+												<h2 class="featured-title"><?php the_title(); ?></h2>  
+												<?php if($thumb_url) { ?>	
+													<a href="<?php the_permalink(); ?>" class="image-container" style="background: url('<?php echo $thumb_url[0];?>') center center no-repeat;">
+												
+													</a>
+												<?php } ?>
+												<!-- output the excerpt, and if no excerpt then output content-->
+												<div class="timeline-featured-content ">
+													<?php  
+														$octane_excerpt = get_the_excerpt(); 
+														if(isset($octane_excerpt)) { ?>
+															<p>
+																<?php 
+																	$temporary_excerpt = substr(strip_tags($octane_excerpt), 0, 130);
+																	echo $temporary_excerpt; 
+																?>
+															</p>
+														<?php }else{  
+															$more = 0; 
+															$octane_content = get_the_content(); 
+															$temporary = substr(strip_tags($octane_content), 0, 130); ?>
+															<p>
+																<?php echo $temporary; ?>
+															</p>
+													<?php }	?>
 												</div>
-													
+												<span class="cd-date"><?php print get_the_date( 'M j Y' ); ?></span>
+												<div class="timeline-footer clearfix">
+													<a href="<?php the_permalink(); ?>" class="cd-read-more">Read more</a>
+												</div>
+												
+											</div><!--inside content -->
 											
-										</article>
-									</li><!--end li-->
-
+										</article><!-- cd-timeline-block -->
+										
+									<?php else: ?>
+										<!-- even -->
+										<article class="article-<?php the_ID(); ?> cd-timeline-block left">
+											<div class="cd-timeline-img cd-picture">
+												<?php /* ?>
+												<time datetime="<?php the_date('c'); ?>"><?php print get_the_date( 'M' ); ?></time>
+												<?php */ ?>
+											</div> <!-- cd-timeline-img -->
+											
+											
+										
+											<div class="inside-content cd-timeline-content">
+												
+												<h2 class="featured-title"><?php the_title(); ?></h2>  
+												<?php if($thumb_url) { ?>
+													<a href="<?php the_permalink(); ?>" class="image-container" style="background: url('<?php echo $thumb_url[0];?>') center center no-repeat;">
+												
+													</a>
+												<?php } ?>
+												<!-- output the excerpt, and if no excerpt then output content-->
+												<div class="timeline-featured-content ">
+													<?php  
+														$octane_excerpt = get_the_excerpt(); 
+														if(isset($octane_excerpt)) { ?>
+															<p>
+																<?php 
+																	$temporary_excerpt = substr(strip_tags($octane_excerpt), 0, 130);
+																	echo $temporary_excerpt; 
+																?>
+															</p>
+														<?php }else{  
+															$more = 0; 
+															$octane_content = get_the_content(); 
+															$temporary = substr(strip_tags($octane_content), 0, 130); ?>
+															<p>
+																<?php echo $temporary; ?>
+															</p>
+													<?php }	?>
+												</div>
+												<span class="cd-date"><?php print get_the_date( 'M j Y' ); ?></span>
+												<div class="timeline-footer clearfix">
+													<a href="<?php the_permalink(); ?>" class="cd-read-more">Read more</a>
+												</div>
+												
+											</div><!--inside content -->
+											
+											
+											
+											
+										</article><!-- cd-timeline-block -->
+									
+									<?php endif; ?>
+									
 								<?php endwhile;
 								wp_reset_query();
 								?>
-							</ul>
+							</section>
 						<?php endforeach; ?>
 							
 							
@@ -126,85 +181,7 @@
 							
 							
 
-							<section id="cd-timeline" class="">
-								<div class="cd-timeline-block">
-									<div class="cd-timeline-img cd-picture">
-										<time datetime="<?php the_date('c'); ?>"><?php print get_the_date(); ?></time>
-									</div> <!-- cd-timeline-img -->
-
-									<div class="cd-timeline-content">
-										<h2>Title of section 1</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-										<a href="#0" class="cd-read-more">Read more</a>
-										<span class="cd-date">Jan 14</span>
-									</div> <!-- cd-timeline-content -->
-								</div> <!-- cd-timeline-block -->
-
-								<div class="cd-timeline-block">
-									<div class="cd-timeline-img cd-movie">
-										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-movie.svg" alt="Movie">
-									</div> <!-- cd-timeline-img -->
-
-									<div class="cd-timeline-content">
-										<h2>Title of section 2</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde?</p>
-										<a href="#0" class="cd-read-more">Read more</a>
-										<span class="cd-date">Jan 18</span>
-									</div> <!-- cd-timeline-content -->
-								</div> <!-- cd-timeline-block -->
-
-								<div class="cd-timeline-block">
-									<div class="cd-timeline-img cd-picture">
-										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-picture.svg" alt="Picture">
-									</div> <!-- cd-timeline-img -->
-
-									<div class="cd-timeline-content">
-										<h2>Title of section 3</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, obcaecati, quisquam id molestias eaque asperiores voluptatibus cupiditate error assumenda delectus odit similique earum voluptatem doloremque dolorem ipsam quae rerum quis. Odit, itaque, deserunt corporis vero ipsum nisi eius odio natus ullam provident pariatur temporibus quia eos repellat consequuntur perferendis enim amet quae quasi repudiandae sed quod veniam dolore possimus rem voluptatum eveniet eligendi quis fugiat aliquam sunt similique aut adipisci.</p>
-										<a href="#0" class="cd-read-more">Read more</a>
-										<span class="cd-date">Jan 24</span>
-									</div> <!-- cd-timeline-content -->
-								</div> <!-- cd-timeline-block -->
-
-								<div class="cd-timeline-block">
-									<div class="cd-timeline-img cd-location">
-										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location.svg" alt="Location">
-									</div> <!-- cd-timeline-img -->
-
-									<div class="cd-timeline-content">
-										<h2>Title of section 4</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-										<a href="#0" class="cd-read-more">Read more</a>
-										<span class="cd-date">Feb 14</span>
-									</div> <!-- cd-timeline-content -->
-								</div> <!-- cd-timeline-block -->
-
-								<div class="cd-timeline-block">
-									<div class="cd-timeline-img cd-location">
-										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-location.svg" alt="Location">
-									</div> <!-- cd-timeline-img -->
-
-									<div class="cd-timeline-content">
-										<h2>Title of section 5</h2>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum.</p>
-										<a href="#0" class="cd-read-more">Read more</a>
-										<span class="cd-date">Feb 18</span>
-									</div> <!-- cd-timeline-content -->
-								</div> <!-- cd-timeline-block -->
-
-								<div class="cd-timeline-block">
-									<div class="cd-timeline-img cd-movie">
-										<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/148866/cd-icon-movie.svg" alt="Movie">
-									</div> <!-- cd-timeline-img -->
-
-									<div class="cd-timeline-content">
-										<h2>Final Section</h2>
-										<p>This is the content of the last section</p>
-										<span class="cd-date">Feb 26</span>
-									</div> <!-- cd-timeline-content -->
-								</div> <!-- cd-timeline-block -->
-							</section> <!-- cd-timeline -->
-
+							
 							
 							
 							<!--<section id="2015" >

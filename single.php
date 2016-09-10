@@ -37,18 +37,30 @@
 							<?php 
 								$meta = get_post_meta($post->ID); 
 								//cmb2_output_file_list( 'wiki_test_file_list', 'small' ); 
-								$temp2 = get_images_src('full',false,$post->ID); 
+								//$temp2 = get_images_src('full',false,$post->ID); 
 								//4 accepted parameters : the 1st size (STRING) & the 2nd size (STRING) & thumbnail (BOOLEAN) & id (integer)
 								
-								//echo "<pre>";  var_dump($temp2); echo "</pre><hr>";
+								//echo "<pre>";  var_dump($meta); echo "</pre><hr>";
 								
+								$gallery_images = $meta['post_gallery_meow'];
+								
+								//echo "<pre>";  var_dump($gallery_images); echo "</pre><hr>";
+								echo '<div class="grid">';
+								$tempcount = 0;
+								foreach ($gallery_images as $value) {
+									++$tempcount;
+									echo '<div class="item"><a href=" ' . $value . ' "  data-lightbox="image-gallery-meow"  ><img class="gallery-image " src=" ' . $value . ' " ></a></div>'; 
+								
+								} 
+								echo '</div>';
+								 
 								//echo $temp2['image1'][0]; 
 								
-								foreach ($temp2 as $value) {
+								/*foreach ($temp2 as $value) {
 									
 									echo '<img src=" ' . $value[0] . '" class="gallery-image" >'; 
 									
-								}
+								} */
 							?>
 							
 							<hr>
