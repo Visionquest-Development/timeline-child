@@ -10,15 +10,29 @@
 
 @import url("../pegasus/style.css");
 	
-	@import url(https://fonts.googleapis.com/css?family=Oleo+Script);
+	@import 'https://fonts.googleapis.com/css?family=Droid+Serif|Oleo+Script';
+	
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~OCTANE CUSTOM CSS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+	
+	html, body {
+		
+		letter-spacing: 1px;
+	}
+	
+	h1, h2, h3, h4, h5 {
+		
+		letter-spacing: 1px;
+	}
+	
 	
 	.the-more-link { display: none !important; }
 	
 	.item { width: 25%; }
 	.grid-item--width2 { width: 50%; }
+	
+	.content-no-sidebar { padding: 25px 0 !important; }
 	
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
@@ -54,7 +68,7 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ NAVIGATION ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	#menu-main-nav { float: right !important; }
+	
 	
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~~~ FOOTER ~~~~~~~
@@ -99,7 +113,7 @@
 	/*~~~~~~~~~~~~~~~~~~~~~
 	~~~~~~ HOME PAGE ~~~~~
 	~~~~~~~~~~~~~~~~~~~~~*/
-	
+	.timeline-featured-image .image-container { display: block !important; }
 	
 	.clearfix { clear: both; }
 	
@@ -110,6 +124,22 @@
 	.right-content .more-padding {
 	  padding-left:100px;
 	}
+	
+	.inside-content.right {
+		float: right !important; 
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+	
+	.inside-content.left {
+		float: left !important; 
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	
+	.timeline-featured-image:before { display: none; }
 	
 
 	/*~~~~~~~~~~~~~~~~~~~~~
@@ -130,7 +160,7 @@
 		padding: 10px; 
 	}
 	
-	.home .cat-year {
+	.cat-year {
 		background: black;
 		color: white; 
 		border-top-right-radius: 10px;
@@ -139,6 +169,18 @@
 		text-align: center; 
 		position: relative; 
 		margin-bottom: 0; 
+	}
+	
+	.home .cat-year:after {
+		content: "\f196";
+		font-family: FontAwesome;
+		font-style: normal;
+		font-weight: normal;
+		text-decoration: inherit;
+		color: white; 
+		position: absolute; 
+		top: 10px;
+		right: 14px;
 	}
 
 	
@@ -194,7 +236,7 @@ Main components
     font-size: 20px;
 	font-weight: bold; 
     text-transform: uppercase !important;
-    letter-spacing: -1px;
+    
     border-radius: 6px 6px 0 0;
     position: relative;
 	background: #e74c3c;
@@ -208,13 +250,13 @@ Main components
 
 .content-right { float: right; }
 
-.timeline-featured-content { padding: 0 20px; }
+.timeline-featured-content { padding: 30px 20px; }
 
 
 .image-container {
 	background-size: cover !important; 
 	background-repeat: no-repeat;
-	padding: 150px 0; 
+	padding: 100px 0; 
 	position: relative; 
 	display: block;
 }
@@ -365,8 +407,8 @@ Main components
 }
 @media only screen and (min-width: 768px) {
   .cd-timeline-content h2 {
-    font-size: 20px;
-    font-size: 1.25rem;
+   /*  font-size: 20px;
+    font-size: 1.25rem; */
   }
   .cd-timeline-content p {
     font-size: 16px;
@@ -376,6 +418,8 @@ Main components
     font-size: 14px;
     font-size: 0.875rem;
   }
+  
+  #menu-main-nav { float: right !important; }
 }
 @media only screen and (min-width: 1170px) {
   .cd-timeline-content {
@@ -640,15 +684,56 @@ Main components
 	@media only screen and ( min-width: 981px ) {
 		
 	}
+	
+	@media only screen and (min-width: 1170px) {
+		.image-container { display: none !important; }
 		
+		
+		.cd-timeline-img.cd-picture time { text-align: center; display: block;   line-height: 23px; }
+		
+		.cd-timeline-img.cd-picture time span { display: block; }
+		
+		.cd-timeline-img.cd-picture time .mth { font-size: 16px; padding-top: 7px; }
+		
+		.cd-timeline-img.cd-picture time .day {  font-weight: bold; font-size: 14px; }
+		
+	}
+	
+	@media only screen and (max-width: 1170px) {
+		.timeline-featured-image.right, .timeline-featured-image.left { display: none; }
+		
+		.cd-date {  padding: 0 20px 10px !important; display: block !important; font-weight: bold !important; }
+		
+		.timeline-featured-content { padding: 10px 20px; }
+		
+		.timeline-footer { padding: 10px; }
+		
+		.cd-timeline-img.cd-picture time { text-align: center; display: block;   line-height: 16px; }
+		
+		.cd-timeline-img.cd-picture time .mth { font-size: 10px; }
+		
+		.cd-timeline-img.cd-picture time .day { font-weight: bold; font-size: 14px; }
+		
+	}	
 	@media only screen and (max-width: 980px) {
 		
 	}
 	
 	@media only screen and ( max-width: 767px ) {
+		.image-container {  padding: 80px 0; }
 		
+		.pegasus-header-content { width: 90%; }
+	}
+	
+	@media only screen and (max-width: 540px) {
+		.image-container {  padding: 50px 0; }
+		
+		.pegasus-header-content { padding: 20px; }
+		
+		.cd-timeline-content h2 { font-size: 15px; padding: 10px; }
 	}
 	
 	@media only screen and (max-width: 479px) {
 		.navbar-brand { font-size: 22px !important; }
+		
 	}

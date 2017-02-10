@@ -5,22 +5,22 @@
 		<?php 
 			
 			//this is the option on the page options
-			$pegasus_container_choice = get_post_meta( get_the_ID(), 'pegasus-page-container-checkbox', true ); 
+			//$pegasus_container_choice = get_post_meta( get_the_ID(), 'pegasus-page-container-checkbox', true ); 
 			//this is the option from the theme options for global fullwidth
-			$full_container_chk_choice =  pegasus_theme_get_option('full_container_chk' ); 
+			//$full_container_chk_choice =  pegasus_theme_get_option('full_container_chk' ); 
 			
 			//$meta2 = get_post_meta($post->ID); 
 			//echo "<pre>";  var_dump($meta2); echo "</pre><hr>";  
 			//echo $pegasus_container_choice;
 		?>
 		
-		<div class="<?php if($full_container_chk_choice === 'on') { 
+		<div class="<?php /* if($full_container_chk_choice === 'on') { 
 										echo 'container-fluid'; 
 									}elseif ($pegasus_container_choice === 'on') { 
 										echo 'container-fluid'; 
 									}else{
 										echo 'container';
-									}?>">
+									} */ ?> container">
 		<!-- Example row of columns -->
 			<div class="row">
 				
@@ -30,13 +30,9 @@
 					<div class="content-no-sidebar clearfix">
 						
 						<?php 
-							$cat_args = array(
-								'orderby'                  => 'name',
-								'order'                    => 'DESC',
-								'parent'  => 0
-							);
 							
-							$categories = get_categories( $cat_args ); 
+							
+							$categories = get_the_category( $post->ID ); 
 							foreach($categories as $cat) : 
 						?>
 							
@@ -59,7 +55,7 @@
 								$category_link = get_category_link( $category_id );
 								
 							?>
-							<a href="<?php echo esc_url( $category_link ); ?>"><h2 class="cat-year"><?php echo $cat->cat_name ?></h2></a>
+							<h2 class="cat-year"><?php echo $cat->cat_name ?></h2>
 							<section class="meow-we-talkin-timeline cd-timeline">
 								
 								<?php

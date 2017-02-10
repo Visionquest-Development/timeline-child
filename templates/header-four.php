@@ -19,11 +19,11 @@
 					
 				$header_three_choice = get_post_meta( get_the_ID(), 'pegasus_header_three_select', true );
 				switch ($header_three_choice) {
-					case "no-header":
+					/*case "no-header":
 						?>
 						<div class="noheader-spacer"></div>
 						<?php 
-						break;
+						break; */
 						
 					case "sml-header":
 						/*==================================
@@ -75,6 +75,29 @@
 						break;
 						
 					default:
+						?>
+						<section class="pagetitle parallax parallax-image" style="background-image: url(<?php echo $src[0]; ?>); background-position: 50% 0px;">
+							
+							
+							<div class="wrapsection">
+								<!--<div class="overlay" style="background:#303543;opacity:0.4;"></div>-->
+								
+								
+								<div class="container">
+									<div class="row">
+										<div class="parallax-content">
+											<div class=" text-center pegasus-header-content" style="color:#fff;">
+													<?php
+														$the_header_content =  get_post_meta(get_the_ID(), 'pegasus-header-three-wysiwyg', true ); 
+														echo $the_header_content;
+													?>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+						<?php
 						
 				}
 				

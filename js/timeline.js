@@ -31,15 +31,18 @@ jQuery(document).ready(function($){
 	});
 	
 	
+
 	
-	$('.grid').packery({
+});
+
+jQuery(window).load(function($){
+	var $container = jQuery('.grid');
+	// init
+	$container.packery({
 	  // options
 	  itemSelector: '.item',
 	  gutter: 10
 	});
-	
 });
-
-
 
 
